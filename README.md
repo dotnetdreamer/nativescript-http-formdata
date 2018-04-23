@@ -28,7 +28,8 @@ https://github.com/NativeScript/nativescript-imagepicker
         let imageData = UIImagePNGRepresentation(image);
         let fo = new TNSHttpFormData();
 
-        //create params. You can upload an array of params i.e multiple data
+        //create params. You can upload an array of params i.e multiple data. For every parameter you need to give unique name
+        //so you can get it on server. Check below how to grab it in ASP.Net MVC
         let params = [];
         let param: TNSHttpFormDataParam = {
           data: imageData,  //must be NSData on iOS
@@ -50,3 +51,28 @@ https://github.com/NativeScript/nativescript-imagepicker
     });
   }
   ```
+Now on server to grab the file(s) in ASP.Net MVC, you can following https://stackoverflow.com/a/16256106/859968 or following
+```
+[HttpPost]
+//file1 and file2 are parameters name as given in NativeScript object. They must match
+public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2)
+{
+    if (file1 != null)
+    {
+        string pic = System.IO.Path.GetFileName(file1.FileName);
+        string path = System.IO.Path.Combine(Server.MapPath("~/App_Data"), pic);
+        // file is uploaded
+        file1.SaveAs(path);
+    }
+    if (file2 != null)
+    {
+        string pic = System.IO.Path.GetFileName(file2.FileName);
+        string path = System.IO.Path.Combine(Server.MapPath("~/App_Data"), pic);
+        // file is uploaded
+        file2.SaveAs(path);
+    }
+
+    // after successfully uploading redirect the user
+    return RedirectToAction("Index", "Home");
+}
+```
