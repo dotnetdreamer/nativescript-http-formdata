@@ -11,8 +11,12 @@ export class TNSHttpFormData {
         return new Promise((resolve, reject) => {
             let multipartFormData = OMGMultipartFormData.new();    
             for(let param of params) {
-                multipartFormData.addFileParameterNameFilenameContentType(
-                    param.data, param.parameterName, param.fileName, param.contentType);
+                if(param.fileName && param.contentType) {
+                    multipartFormData.addFileParameterNameFilenameContentType(
+                        param.data, param.parameterName, param.fileName, param.contentType);    
+                } else {
+                    multipartFormData.addTextParameterName(param.data, param.parameterName);
+                }
             }
 
             let request: NSMutableURLRequest = OMGHTTPURLRQ.POSTError(url, multipartFormData);

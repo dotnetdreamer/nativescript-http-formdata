@@ -5,6 +5,6 @@ export class TNSHttpFormData {
 export interface TNSHttpFormDataParam {
     data: any
     parameterName: string
-    fileName: string
-    contentType: string
+    fileName?: string
+    contentType?: string
 }
