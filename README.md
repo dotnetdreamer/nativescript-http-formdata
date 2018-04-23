@@ -28,9 +28,10 @@ https://github.com/NativeScript/nativescript-imagepicker
         let imageData = UIImagePNGRepresentation(image);
         let fo = new TNSHttpFormData();
 
+        //create params. You can upload an array of params i.e multiple data
         let params = [];
         let param: TNSHttpFormDataParam = {
-          data: imageData,
+          data: imageData,  //must be NSData on iOS
           contentType: 'image/png',
           fileName: 'test.png',
           parameterName: 'file1'
