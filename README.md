@@ -32,12 +32,17 @@ https://github.com/NativeScript/nativescript-imagepicker
         //so you can get it on server. Check below how to grab it in ASP.Net MVC
         let params = [];
         let param: TNSHttpFormDataParam = {
-          data: imageData,  //must be NSData on iOS
+          data: imageData,
           contentType: 'image/png',
           fileName: 'test.png',
           parameterName: 'file1'
         };
         params.push(param);
+        let param2: TNSHttpFormDataParam = {
+          data: "John Doe",
+          parameterName: "firstName"
+        };
+        params.push(param2);
 
         fo.upload('http://10.10.10.154:10011/home/fileupload', params)
         .then((isUploaded) => {
@@ -55,7 +60,7 @@ Now on server to grab the file(s) in ASP.Net MVC, you can follow https://stackov
 ```
 [HttpPost]
 //file1 and file2 are parameters name as given in NativeScript object. They must match
-public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2)
+public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2, string firstName)
 {
     if (file1 != null)
     {
