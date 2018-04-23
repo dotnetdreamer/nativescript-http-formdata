@@ -51,7 +51,7 @@ https://github.com/NativeScript/nativescript-imagepicker
     });
   }
   ```
-Now on server to grab the file(s) in ASP.Net MVC, you can following https://stackoverflow.com/a/16256106/859968 or following
+Now on server to grab the file(s) in ASP.Net MVC, you can follow https://stackoverflow.com/a/16256106/859968 or following
 ```
 [HttpPost]
 //file1 and file2 are parameters name as given in NativeScript object. They must match
