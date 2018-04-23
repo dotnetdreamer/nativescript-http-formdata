@@ -44,9 +44,6 @@ https://github.com/NativeScript/nativescript-imagepicker
           console.log(error);
         });
       });
-
-      // let assetLibrary = ALAssetsLibrary.alloc().init();
-      // assetLibrary.assetForURLResultBlockFailureBlock(item.)
     }).catch(function (e) {
         alert(e);
     });
