@@ -1,10 +1,10 @@
 Android work is in progress. 
 
-Add the plugin
+#### Add the plugin
 ```
 tns plugin add nativescript-http-formdata
 ```
-Usage
+#### TypeScript
 
 ```
 import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
