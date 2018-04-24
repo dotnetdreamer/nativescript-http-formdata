@@ -6,6 +6,7 @@
       "ios": "3.0.0"
     }
   },
+  "homepage": "https://github.com/dotnetdreamer/nativescript-http-formdata"
   "author": {
     "name": "Idrees Khan"
   },
