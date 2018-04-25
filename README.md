@@ -1,3 +1,4 @@
+A NativeScript plugin to post/upload file as multipart/form-data to server
 Android work is in progress. 
 
 #### Add the plugin
