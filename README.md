@@ -1,5 +1,4 @@
-A NativeScript plugin to post/upload file as multipart/form-data to server
-Android work is in progress. 
+A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android
 
 #### Add the plugin
 ```
