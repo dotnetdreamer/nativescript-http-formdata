@@ -26,18 +26,7 @@ export class TNSHttpFormData extends Common {
                         reject(error);
                         return;
                     }
-                    const httpResponse: NSHTTPURLResponse = <NSHTTPURLResponse>response;
-                    switch(httpResponse.statusCode) {
-                        case 200:
-                            resolve(true);
-                        break;
-                        case 500:
-                            reject('Something went wrong on server');
-                        break;
-                        default:
-                            resolve(false);
-                        break;
-                    } 
+                    resolve(<NSHTTPURLResponse>response);
                 });
         });
     }
