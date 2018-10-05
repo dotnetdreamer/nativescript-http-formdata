@@ -8,7 +8,7 @@ export class TNSHttpFormData extends Common {
         super();
     }
 
-    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<boolean> {
+    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<any> {
         return new Promise((resolve, reject) => {
             try {                
                 let client = new okhttp3.OkHttpClient();
@@ -30,8 +30,8 @@ export class TNSHttpFormData extends Common {
                         .build();
 
                 let callback = new okhttp3.Callback({
-                    onResponse: (call, e) => {
-                        resolve(true);
+                    onResponse: (call, response) => {
+                        resolve(response);
                     },
                     onFailure: (call, e) => {
                         reject(e);
