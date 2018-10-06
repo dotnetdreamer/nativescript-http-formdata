@@ -13,6 +13,7 @@ seed-tests/seed-copy/**/*.*
 seed-tests/seed-copy-new-git-repo/**/*.*
 !demo-ng/karma.conf.js
 !demo-ng/app/tests/*.js
+!demo-ng/app/helpers.js
 demo-ng/*.d.ts
 !demo-ng/references.d.ts
 demo-ng/lib
@@ -22,3 +23,4 @@ publish/src
 publish/package
 demo-ng/report/report.html
 demo-ng/report/stats.json
+package-lock.json
