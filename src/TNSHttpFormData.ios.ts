@@ -1,4 +1,4 @@
-import { TNSHttpFormDataParam } from "./index";
+import { TNSHttpFormDataParam, TNSHttpFormDataResponse } from "./index";
 import { Common } from "./TNSHttpFormData.common";
 
 export class TNSHttpFormData extends Common {
@@ -6,7 +6,7 @@ export class TNSHttpFormData extends Common {
         super();
     }
 
-    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<any> {
+    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<TNSHttpFormDataResponse> {
         return new Promise((resolve, reject) => {
             let multipartFormData = OMGMultipartFormData.new();
             for (let param of params) {
@@ -20,13 +20,18 @@ export class TNSHttpFormData extends Common {
 
             let request: NSMutableURLRequest = OMGHTTPURLRQ.POSTError(url, multipartFormData);
             NSURLConnection.sendAsynchronousRequestQueueCompletionHandler(
-                request, NSOperationQueue.currentQueue, (response, data, error) => {
+                request, NSOperationQueue.currentQueue, (response: NSHTTPURLResponse, data: NSData, error: NSError) => {
                     if (error) {
                         reject(error);
                         return;
                     }
-                    const httpResponse: NSHTTPURLResponse = <NSHTTPURLResponse>response;
-                    resolve(httpResponse);
+                    let responseData: TNSHttpFormDataResponse = {
+                        headers: response.allHeaderFields,
+                        statusCode: response.statusCode,
+                        statusMessage: NSHTTPURLResponse.localizedStringForStatusCode(response.statusCode),
+                        body: JSON.parse(NSString.alloc().initWithDataEncoding(data, NSASCIIStringEncoding).description)
+                    }
+                    resolve(responseData);
                 });
         });
     }

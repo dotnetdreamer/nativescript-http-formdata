@@ -1,5 +1,5 @@
 import { Common } from './TNSHttpFormData.common';
-import { TNSHttpFormDataParam } from './index';
+import { TNSHttpFormDataParam, TNSHttpFormDataResponse } from './index';
 
 declare const okhttp3: any;
 
@@ -8,30 +8,36 @@ export class TNSHttpFormData extends Common {
         super();
     }
 
-    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<any> {
+    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<TNSHttpFormDataResponse> {
         return new Promise((resolve, reject) => {
-            try {                
+            try {
                 let client = new okhttp3.OkHttpClient();
                 let builder = new okhttp3.MultipartBody.Builder()
-                        .setType(okhttp3.MultipartBody.FORM);
+                    .setType(okhttp3.MultipartBody.FORM);
 
-                for(let param of params) {
-                    if(param.fileName && param.contentType) {
+                for (let param of params) {
+                    if (param.fileName && param.contentType) {
                         const MEDIA_TYPE = okhttp3.MediaType.parse(param.contentType);
-                        builder.addFormDataPart(param.parameterName, param.fileName, okhttp3.RequestBody.create(MEDIA_TYPE, param.data));   
+                        builder.addFormDataPart(param.parameterName, param.fileName, okhttp3.RequestBody.create(MEDIA_TYPE, param.data));
                     } else {
                         builder.addFormDataPart(param.parameterName, param.data);
                     }
                 }
                 let requestBody = builder.build();
                 let request = new okhttp3.Request.Builder()
-                        .url(url)
-                        .post(requestBody)
-                        .build();
+                    .url(url)
+                    .post(requestBody)
+                    .build();
 
                 let callback = new okhttp3.Callback({
                     onResponse: (call, response) => {
-                        resolve(response);
+                        let responseData: TNSHttpFormDataResponse = {
+                            headers: response.headers().toString(),
+                            statusCode: response.code(),
+                            statusMessage: response.message(),
+                            body: JSON.parse(response.body().string())
+                        }
+                        resolve(responseData);
                     },
                     onFailure: (call, e) => {
                         reject(e);

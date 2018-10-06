@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import * as imagepicker from "nativescript-imagepicker";
 
-import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
+import { TNSHttpFormData, TNSHttpFormDataParam, TNSHttpFormDataResponse } from 'nativescript-http-formdata';
 require('./helpers');
 
 @Component({
@@ -65,8 +65,8 @@ export class AppComponent {
             params.push(param2);
     
             try {
-                const isUploaded = await fd.post('http://10.10.10.154:10011/home/fileupload', params);
-                console.log('isUploaded: ' + isUploaded);
+                const response: TNSHttpFormDataResponse = await fd.post('http://10.10.10.154:10011/home/fileupload', params);
+                console.dir('response: ' + response);
             } catch (e) {
                 console.log('---------------app.ts---------------');
                 console.log(e);

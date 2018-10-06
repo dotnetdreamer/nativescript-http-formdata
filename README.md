@@ -4,15 +4,19 @@ A NativeScript plugin to post/upload file as multipart/form-data to server for i
 ```
 tns plugin add nativescript-http-formdata
 ```
+# Dependencies
+Android | iOS
+-----|-----
+okhttp3 | OMGHTTPURLRQ
 #### TypeScript
 
-```
+```TS
 import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
 ```
 use the ImagePicker plugin or any other.
 https://github.com/NativeScript/nativescript-imagepicker
 
-```
+```TS
     private test() {
         let context = imagepicker.create({
             mode: "single" // use "multiple" for multiple selection
@@ -73,7 +77,7 @@ https://github.com/NativeScript/nativescript-imagepicker
     }
   ```
 Now on server to grab the file(s) in ASP.Net MVC, you can follow https://stackoverflow.com/a/16256106/859968 or following
-```
+```C#
 [HttpPost]
 //file1 and file2 are parameters name as given in NativeScript object. They must match
 public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2, string firstName)
@@ -97,3 +101,15 @@ public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file
     return RedirectToAction("Index", "Home");
 }
 ```
+
+<VirtualBjorn>
+
+```TS
+let response: TNSHttpFormDataResponse = await fd.post('http://url.com/fileupload', params);
+console.dir(response);
+```
+## TNSHttpFormDataResponse Properties
+- **headers** - response header
+- **statusCode** - http status code (number)
+- **statusMessage** - http status code message (string)
+- **body** - response body (JSON Parsed)
