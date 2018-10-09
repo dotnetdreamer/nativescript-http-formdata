@@ -6,13 +6,13 @@ tns plugin add nativescript-http-formdata
 ```
 #### TypeScript
 
-```
+```typescript
 import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
 ```
 use the ImagePicker plugin or any other.
 https://github.com/NativeScript/nativescript-imagepicker
 
-```
+```typescript
     private test() {
         let context = imagepicker.create({
             mode: "single" // use "multiple" for multiple selection
@@ -78,7 +78,7 @@ https://github.com/NativeScript/nativescript-imagepicker
     }
   ```
 Now on server to grab the file(s) in ASP.Net MVC, you can follow https://stackoverflow.com/a/16256106/859968 or following
-```
+```csharp
 [HttpPost]
 //file1 and file2 are parameters name as given in NativeScript object. They must match
 public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2, string firstName)
