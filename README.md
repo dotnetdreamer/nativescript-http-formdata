@@ -60,8 +60,13 @@ https://github.com/NativeScript/nativescript-imagepicker
             params.push(param2);
     
             try {
-                const isUploaded = await fd.post('http://url.com/fileupload', params);
-                console.log('isUploaded: ' + isUploaded);
+                const response = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
+                    headers: {
+                        test1: "test1 value",
+                        "x-version-no": "2.0"
+                    }
+                });
+                console.log(response);
             } catch (e) {
                 console.log('---------------app.ts---------------');
                 console.log(e);
@@ -78,6 +83,8 @@ Now on server to grab the file(s) in ASP.Net MVC, you can follow https://stackov
 //file1 and file2 are parameters name as given in NativeScript object. They must match
 public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file2, string firstName)
 {
+    //grab your headers
+    var headers = Request.Headers;
     if (file1 != null)
     {
         string pic = System.IO.Path.GetFileName(file1.FileName);

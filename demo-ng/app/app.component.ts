@@ -64,15 +64,21 @@ export class AppComponent {
             };
             params.push(param2);
     
-            try {
-                const isUploaded = await fd.post('http://10.10.10.154:10011/home/fileupload', params);
-                console.log('isUploaded: ' + isUploaded);
+            try { 
+                const response = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
+                    headers: {
+                        test1: "test1 value",
+                        "x-version-no": "2.0"
+                    }
+                });
+                console.log(response);
             } catch (e) {
                 console.log('---------------app.ts---------------');
                 console.log(e);
             }
           });
         }).catch(function (e) {
+            console.log('-------------------error----------------')
             console.log(e);
         });
       }

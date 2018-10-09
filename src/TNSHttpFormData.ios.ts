@@ -1,4 +1,4 @@
-import { TNSHttpFormDataParam } from "./index";
+import { TNSHttpFormDataParam, TNSHttpFormDataRequestOptions } from "./index";
 import { Common } from "./TNSHttpFormData.common";
 
 
@@ -7,7 +7,7 @@ export class TNSHttpFormData extends Common {
         super();
     }
 
-    post(url: string, params: Array<TNSHttpFormDataParam>): Promise<boolean> {
+    post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions): Promise<any> {
         return new Promise((resolve, reject) => {
             let multipartFormData = OMGMultipartFormData.new();    
             for(let param of params) {
