@@ -25,6 +25,8 @@ export class TNSHttpFormData extends Common {
                     //https://stackoverflow.com/a/4265260
                     request.addValueForHTTPHeaderField(options.headers[k], k);
                 }
+                // Log the output to make sure our new headers are there    
+                console.log(request.allHTTPHeaderFields);
             }       
             NSURLConnection.sendAsynchronousRequestQueueCompletionHandler(
                 request, NSOperationQueue.currentQueue, (response, data, error) => {
