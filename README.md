@@ -1,5 +1,9 @@
 A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android
 
+#### Versions
+
+[1.5.0] Now supports custom headers
+
 #### Add the plugin
 ```
 tns plugin add nativescript-http-formdata
