@@ -7,6 +7,9 @@
     "id": "org.nativescript.demong",
     "tns-android": {
       "version": "4.2.0"
+    },
+    "tns-ios": {
+      "version": "4.2.0"
     }
   },
   "dependencies": {
@@ -21,7 +24,7 @@
     "@angular/router": "~5.2.0",
     "nativescript-angular": "~5.3.0",
     "nativescript-http-formdata": "file:../src",
-    "nativescript-imagepicker": "^6.0.1",
+    "nativescript-imagepicker": "^6.0.4",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.5.2",
