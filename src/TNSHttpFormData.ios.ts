@@ -20,6 +20,12 @@ export class TNSHttpFormData extends Common {
             }
 
             let request: NSMutableURLRequest = OMGHTTPURLRQ.POSTError(url, multipartFormData);
+            if (options && options.headers) {
+                for(let k in options.headers) {
+                    //https://stackoverflow.com/a/4265260
+                    request.addValueForHTTPHeaderField(options.headers[k], k);
+                }
+            }       
             NSURLConnection.sendAsynchronousRequestQueueCompletionHandler(
                 request, NSOperationQueue.currentQueue, (response, data, error) => {
                     if(error) {
@@ -27,17 +33,7 @@ export class TNSHttpFormData extends Common {
                         return;
                     }
                     const httpResponse: NSHTTPURLResponse = <NSHTTPURLResponse>response;
-                    switch(httpResponse.statusCode) {
-                        case 200:
-                            resolve(true);
-                        break;
-                        case 500:
-                            reject('Something went wrong on server');
-                        break;
-                        default:
-                            resolve(false);
-                        break;
-                    } 
+                    resolve(httpResponse);
                 });
         });
     }
