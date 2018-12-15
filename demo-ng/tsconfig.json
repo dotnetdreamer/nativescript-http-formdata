@@ -6,7 +6,6 @@
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
-        "importHelpers": true,
         "lib": [
             "es6",
             "dom",
@@ -15,7 +14,7 @@
         "baseUrl": ".",
         "paths": {
             "~/*": [
-                "app/*"
+                "src/*"
             ],
             "*": [
                 "./node_modules/tns-core-modules/*",

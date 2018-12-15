@@ -1,6 +1,5 @@
-android {
-    
-}
+/* Include.gradle configuration: http://docs.nativescript.org/plugins/plugins#includegradle-specification */
+
 repositories {
     mavenCentral()
 }
