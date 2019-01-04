@@ -3,7 +3,7 @@ A NativeScript plugin to post/upload file as multipart/form-data to server for i
 #### Versions
 
 [1.6.0] Added common response in iOS and Android instead returned by native APIs. 
-Thanks to [@virtualbjorn] (https://github.com/virtualbjorn)
+Thanks to [virtualbjorn](https://github.com/virtualbjorn)
 
 [1.5.0] Now supports custom headers
 
