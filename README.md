@@ -12,7 +12,7 @@ Thanks to [virtualbjorn](https://github.com/virtualbjorn)
 tns plugin add nativescript-http-formdata
 ```
 # Dependencies
-Android | iOS
+Android | [iOS](https://cocoapods.org/pods/OMGHTTPURLRQ)
 -----|-----
 okhttp3 | OMGHTTPURLRQ
 #### TypeScript
