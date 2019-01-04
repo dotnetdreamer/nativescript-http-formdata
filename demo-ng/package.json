@@ -3,9 +3,6 @@
         "id": "org.nativescript.demong",
         "tns-ios": {
             "version": "5.1.0"
-        },
-        "tns-android": {
-            "version": "5.1.0"
         }
     },
     "description": "NativeScript Application",

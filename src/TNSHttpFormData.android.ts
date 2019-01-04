@@ -1,5 +1,5 @@
 import { Common } from './TNSHttpFormData.common';
-import { TNSHttpFormDataParam, TNSHttpFormDataRequestOptions } from './index';
+import { TNSHttpFormDataParam, TNSHttpFormDataRequestOptions, TNSHttpFormDataResponse } from './index';
 
 declare const okhttp3: any;
 
@@ -8,7 +8,8 @@ export class TNSHttpFormData extends Common {
         super();
     }
 
-    post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions): Promise<any> {
+    post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions) 
+        : Promise<TNSHttpFormDataResponse> {
         return new Promise((resolve, reject) => {
             try {                
                 let client = new okhttp3.OkHttpClient();
@@ -37,15 +38,23 @@ export class TNSHttpFormData extends Common {
                     .build();
                 let callback = new okhttp3.Callback({
                     //all server errors will arrive here
-                    onResponse: (call, e) => {
-                        // console.log('-------------onResponse-------------')
-                        // console.log(e);
-                        resolve(e);
+                    onResponse: (call, response) => {
+                        let body;
+                        try {
+                            body = JSON.parse(response.body().string());
+                        } catch(e) {}
+
+                        let customResponse: TNSHttpFormDataResponse = {
+                            headers: response.headers().toString(),
+                            statusCode: response.code(),
+                            statusMessage: response.message(),
+                            body: body
+                        }
+                        resolve(customResponse);
                     },
                     //incase of timeout etc, this will be called
-                    onFailure: (call, e) => {
-                        // console.log('-------------onFailure-------------')
-                        reject(e);
+                    onFailure: (call, response) => {
+                        reject(response);
                     }
                 });
 
@@ -54,11 +63,5 @@ export class TNSHttpFormData extends Common {
                 reject(e);
             }
         });
-    }
-
-    private prepareHeaders(request, options: TNSHttpFormDataRequestOptions) {
-        if (options && options.headers) {
-            Object.keys(options.headers).forEach(k => request.addHeader(k, options.headers[k]));
-        }  
     }
 }

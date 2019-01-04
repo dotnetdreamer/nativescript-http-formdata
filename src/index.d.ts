@@ -3,7 +3,7 @@ export declare class TNSHttpFormData extends Common {
   // define your typings manually
   // or..
   // take the ios or android .d.ts files and copy/paste them here
-  post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions): Promise<any>;
+  post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions): Promise<TNSHttpFormDataResponse>;
 }
 
 
@@ -16,4 +16,11 @@ export interface TNSHttpFormDataParam {
 
 export interface TNSHttpFormDataRequestOptions {
   headers: any
+}
+
+export interface TNSHttpFormDataResponse {
+  headers: any
+  statusCode: number
+  statusMessage: string
+  body: any
 }

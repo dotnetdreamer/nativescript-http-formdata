@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import * as imagepicker from "nativescript-imagepicker";
-import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
+import { TNSHttpFormData, TNSHttpFormDataParam, TNSHttpFormDataResponse } from 'nativescript-http-formdata';
 require('../helpers');
 
 @Component({
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
             params.push(param2);
     
             try { 
-                const response = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
+                const response: TNSHttpFormDataResponse = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
                     headers: {
                         test1: "test1 value",
                         "x-version-no": "2.0"

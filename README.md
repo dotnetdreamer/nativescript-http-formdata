@@ -2,16 +2,20 @@ A NativeScript plugin to post/upload file as multipart/form-data to server for i
 
 #### Versions
 
+[1.6.0] Added common response in iOS and Android instead returned by native APIs. Thanks to [@virtualbjorn] (https://github.com/virtualbjorn)
 [1.5.0] Now supports custom headers
 
 #### Add the plugin
 ```
 tns plugin add nativescript-http-formdata
 ```
+# Dependencies
+Android | iOS
+-----|-----
+okhttp3 | OMGHTTPURLRQ
 #### TypeScript
-
 ```
-import { TNSHttpFormData, TNSHttpFormDataParam } from 'nativescript-http-formdata';
+import { TNSHttpFormData, TNSHttpFormDataParam, TNSHttpFormDataResponse } from 'nativescript-http-formdata';
 ```
 use the ImagePicker plugin or any other.
 https://github.com/NativeScript/nativescript-imagepicker
@@ -64,7 +68,7 @@ https://github.com/NativeScript/nativescript-imagepicker
             params.push(param2);
     
             try {
-                const response = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
+                const response: TNSHttpFormDataResponse = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
                     headers: {
                         test1: "test1 value",
                         "x-version-no": "2.0"
@@ -72,7 +76,6 @@ https://github.com/NativeScript/nativescript-imagepicker
                 });
                 console.log(response);
             } catch (e) {
-                console.log('---------------app.ts---------------');
                 console.log(e);
             }
           });
@@ -108,3 +111,8 @@ public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file
     return RedirectToAction("Index", "Home");
 }
 ```
+## TNSHttpFormDataResponse Properties
+- **headers** - response header
+- **statusCode** - http status code (number)
+- **statusMessage** - http status code message (string)
+- **body** - response body (JSON Parsed)
