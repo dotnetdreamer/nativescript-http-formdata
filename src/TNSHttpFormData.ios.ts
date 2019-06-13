@@ -47,23 +47,20 @@ export class TNSHttpFormData extends Common
                         return;
                     }
                     let desc;
-                    let raw;
+                    const temp = NSString.alloc().initWithDataEncoding(data, NSASCIIStringEncoding);
                     try
                     {
-                        const temp = NSString.alloc().initWithDataEncoding(data, NSASCIIStringEncoding);
-                        raw = temp.description;
                         desc = JSON.parse(temp.description);
                     } catch (e)
                     {
-                        desc = null;
+                        desc = temp.description;
                     }
 
                     let customResponse: TNSHttpFormDataResponse = {
                         headers: response.allHeaderFields,
                         statusCode: response.statusCode,
                         statusMessage: NSHTTPURLResponse.localizedStringForStatusCode(response.statusCode),
-                        body: desc,
-                        raw: raw
+                        body: desc
                     }
                     resolve(customResponse);
                 });

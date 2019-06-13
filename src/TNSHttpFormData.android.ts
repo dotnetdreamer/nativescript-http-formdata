@@ -54,19 +54,17 @@ export class TNSHttpFormData extends Common
                         let raw;
                         try
                         {
-                            raw = response.body().string();
                             body = JSON.parse(response.body().string());
                         } catch (e)
                         {
-                            body = null;
+                            body = response.body().string();
                         }
 
                         let customResponse: TNSHttpFormDataResponse = {
                             headers: response.headers().toString(),
                             statusCode: response.code(),
                             statusMessage: response.message(),
-                            body: body,
-                            raw: raw
+                            body: body
                         }
                         resolve(customResponse);
                     },
