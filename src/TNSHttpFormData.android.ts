@@ -51,7 +51,6 @@ export class TNSHttpFormData extends Common
                     onResponse: (call, response) =>
                     {
                         let body;
-                        let raw;
                         try
                         {
                             body = JSON.parse(response.body().string());
