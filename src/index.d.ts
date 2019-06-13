@@ -22,5 +22,6 @@ export interface TNSHttpFormDataResponse {
   headers: any
   statusCode: number
   statusMessage: string
-  body: any
+  body: any,
+  raw: any
 }
