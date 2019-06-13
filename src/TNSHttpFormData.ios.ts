@@ -32,10 +32,10 @@ export class TNSHttpFormData extends Common
             {
                 for (let k in options.headers)
                 {
-                    //https://stackoverflow.com/a/4265260
+                    // https://stackoverflow.com/a/4265260
                     request.addValueForHTTPHeaderField(options.headers[k], k);
                 }
-                // Log the output to make sure our new headers are there    
+                // Log the output to make sure our new headers are there
                 console.log(request.allHTTPHeaderFields);
             }
             NSURLConnection.sendAsynchronousRequestQueueCompletionHandler(
@@ -61,7 +61,7 @@ export class TNSHttpFormData extends Common
                         statusCode: response.statusCode,
                         statusMessage: NSHTTPURLResponse.localizedStringForStatusCode(response.statusCode),
                         body: desc
-                    }
+                    };
                     resolve(customResponse);
                 });
         });

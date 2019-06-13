@@ -65,7 +65,7 @@ export class TNSHttpFormData extends Common
                             statusCode: response.code(),
                             statusMessage: response.message(),
                             body: body
-                        }
+                        };
                         resolve(customResponse);
                     },
                     // incase of timeout etc, this will be called
