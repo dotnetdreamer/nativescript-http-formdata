@@ -117,4 +117,4 @@ public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file
 - **headers** - response header
 - **statusCode** - http status code (number)
 - **statusMessage** - http status code message (string)
-- **body** - response body (JSON Parsed)
+- **body** - response body (JSON Parsed if is a json, raw string else) 
