@@ -1,0 +1,62 @@
+{
+	"name": "nativescript-http-formdata",
+	"version": "1.0.0",
+	"description": "A NativeScript plugin to post/upload file as multipart/form-data to server.",
+	"main": "TNSHttpFormData",
+	"typings": "index.d.ts",
+	"nativescript": {
+		"platforms": {
+			"android": "6.0.0",
+			"ios": "6.0.1"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dotnetdreamer/nativescript-http-formdata.git"
+	},
+	"scripts": {
+		"tsc": "npm i && tsc",
+		"build": "npm run tsc && npm run build.native",
+		"build.native": "node scripts/build-native.js",
+		"postclone": "npm i && node scripts/postclone.js",
+		"tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
+		"ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
+		"prepack": "npm run build.native",
+		"demo.ios": "npm run tsc && cd ../demo && tns run ios --emulator",
+		"demo.android": "npm run tsc && cd ../demo && tns run android --emulator",
+		"demo.reset": "cd ../demo && npx rimraf -- hooks node_modules platforms package-lock.json",
+		"demo-angular.ios": "npm run tsc && cd ../demo-angular && tns run ios",
+		"demo-angular.android": "npm run tsc && cd ../demo-angular && tns run android",
+		"demo-angular.reset": "cd ../demo-angular && npx rimraf -- hooks node_modules platforms package-lock.json",
+		"plugin.prepare": "npm run build && cd ../demo && tns plugin remove nativescript-http-formdata && tns plugin add ../src && cd ../demo-angular && tns plugin remove nativescript-http-formdata && tns plugin add ../src",
+		"clean": "npm run demo.reset && npm run demo-angular.reset && npx rimraf -- node_modules package-lock.json && npm i"
+	},
+	"keywords": [
+		"NativeScript",
+		"JavaScript",
+		"Android",
+		"iOS",
+		"FormData",
+		"Nativescript Form Data"
+	],
+	"author": {
+		"name": "Idrees Khan"
+	},
+	"bugs": {
+		"url": "https://github.com/dotnetdreamer/nativescript-http-formdata/issues"
+	},
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/dotnetdreamer/nativescript-http-formdata",
+	"readmeFilename": "README.md",
+	"devDependencies": {
+		"tns-core-modules": "^6.0.0",
+		"tns-platform-declarations": "^6.0.0",
+		"typescript": "~3.4.5",
+		"prompt": "^1.0.0",
+		"rimraf": "^2.6.3",
+		"tslint": "^5.12.1",
+		"semver": "^5.6.0"
+	},
+	"dependencies": {},
+	"bootstrapper": "nativescript-plugin-seed"
+}
