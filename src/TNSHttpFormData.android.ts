@@ -11,24 +11,18 @@ export class TNSHttpFormData extends Common
     }
 
     post(url: string, params: Array<TNSHttpFormDataParam>, options?: TNSHttpFormDataRequestOptions)
-        : Promise<TNSHttpFormDataResponse>
-    {
-        return new Promise((resolve, reject) =>
-        {
-            try
-            {
+        : Promise<TNSHttpFormDataResponse> {
+        return new Promise((resolve, reject) => {
+            try {
                 let client = new okhttp3.OkHttpClient();
                 let builder = new okhttp3.MultipartBody.Builder()
                     .setType(okhttp3.MultipartBody.FORM);
 
-                for (let param of params)
-                {
-                    if (param.fileName && param.contentType)
-                    {
+                for (let param of params) {
+                    if (param.fileName && param.contentType) {
                         const MEDIA_TYPE = okhttp3.MediaType.parse(param.contentType);
                         builder.addFormDataPart(param.parameterName, param.fileName, okhttp3.RequestBody.create(MEDIA_TYPE, param.data));
-                    } else
-                    {
+                    } else {
                         builder.addFormDataPart(param.parameterName, param.data);
                     }
                 }
@@ -36,10 +30,8 @@ export class TNSHttpFormData extends Common
                 let reqWithURL = new okhttp3.Request.Builder()
                     .url(url);
 
-                if (options && options.headers)
-                {
-                    for (let k in options.headers)
-                    {
+                if (options && options.headers) {
+                    for (let k in options.headers) {
                         reqWithURL.addHeader(k, options.headers[k]);
                     }
                 }
@@ -48,14 +40,11 @@ export class TNSHttpFormData extends Common
                     .build();
                 let callback = new okhttp3.Callback({
                     // all server errors will arrive here
-                    onResponse: (call, response) =>
-                    {
+                    onResponse: (call, response) => {
                         let body;
-                        try
-                        {
+                        try {
                             body = JSON.parse(response.body().string());
-                        } catch (e)
-                        {
+                        } catch (e) {
                             body = response.body().string();
                         }
 
@@ -68,15 +57,13 @@ export class TNSHttpFormData extends Common
                         resolve(customResponse);
                     },
                     // incase of timeout etc, this will be called
-                    onFailure: (call, response) =>
-                    {
+                    onFailure: (call, response) => {
                         reject(response);
                     }
                 });
 
                 client.newCall(request).enqueue(callback);
-            } catch (e)
-            {
+            } catch (e) {
                 reject(e);
             }
         });

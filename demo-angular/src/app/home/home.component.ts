@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
                 });
                 console.log(response);
             } catch (e) {
-                console.log('---------------app.ts---------------');
+                console.log('---------------home.component.ts---------------');
                 console.log(e);
             }
           });
