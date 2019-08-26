@@ -26,7 +26,7 @@
 		"demo.android": "npm run tsc && cd ../demo-angular && tns run android",
 		"demo.reset": "cd ../demo-angular && npx rimraf -- hooks node_modules platforms package-lock.json",
 		"plugin.prepare": "npm run build && cd ../demo-angular && tns plugin remove nativescript-http-formdata && tns plugin add ../src",
-		"clean": "npm run demo.reset && npm run demo-angular.reset && npx rimraf -- node_modules package-lock.json && npm i"
+		"clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
 	},
 	"keywords": [
 		"NativeScript",
