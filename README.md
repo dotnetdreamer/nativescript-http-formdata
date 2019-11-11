@@ -1,6 +1,8 @@
-A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android
+A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android. NS 6.1.0+ is required. Please use older version if you have older version of NS platform installed. 
 
 #### Versions
+[2.0.0]
+Upgraded to NS 6.2.0. Fixed Kotlin issue. More [here](https://github.com/NativeScript/android-runtime/issues/1178)
 
 [1.6.0] Added common response in iOS and Android instead returned by native APIs. 
 Thanks to [virtualbjorn](https://github.com/virtualbjorn)
