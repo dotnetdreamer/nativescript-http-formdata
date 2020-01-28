@@ -15,8 +15,11 @@ export class TNSHttpFormData extends Common
         return new Promise((resolve, reject) => {
             try {
                 let client = new okhttp3.OkHttpClient();
-                let builder = new okhttp3.MultipartBody.Builder()
-                    .setType(okhttp3.MultipartBody.FORM);
+                let builder = new okhttp3.MultipartBody.Builder();
+
+                // builder.setType(okhttp3.MultipartBody.FORM);
+                const FORM_MEDIA_TYPE = okhttp3.MediaType.parse("multipart/form-data");
+                builder.setType(FORM_MEDIA_TYPE);
 
                 for (let param of params) {
                     if (param.fileName && param.contentType) {
