@@ -41,21 +41,23 @@ export class HomeComponent implements OnInit {
             //create params. You can upload an array of params i.e multiple data. For every parameter you need to give unique name
             //so you can get it on server. Check below how to grab it in ASP.Net MVC
             let params = [];
-
             let imageData: any;
-            if(image) {
-                if(image.ios) {
-                    imageData = UIImagePNGRepresentation(image);
-                } else {
-                    //can be one of these overloads https://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html
-                    let bitmapImage: android.graphics.Bitmap = image;
-                    let stream = new java.io.ByteArrayOutputStream();
-                    bitmapImage.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream);
-                    let byteArray = stream.toByteArray();
-                    bitmapImage.recycle();
+            
+            if(!image) {
+                throw 'Could not get image';
+            }
 
-                    imageData = byteArray;
-                }
+            if(image.ios) {
+                imageData = UIImagePNGRepresentation(image);
+            } else {
+                //can be one of these overloads https://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html
+                let bitmapImage: android.graphics.Bitmap = image;
+                let stream = new java.io.ByteArrayOutputStream();
+                bitmapImage.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream);
+                let byteArray = stream.toByteArray();
+                bitmapImage.recycle();
+
+                imageData = byteArray;
             }
             let param: TNSHttpFormDataParam = {
                 data: imageData,
@@ -69,6 +71,8 @@ export class HomeComponent implements OnInit {
               parameterName: "firstName"
             };
             params.push(param2);
+
+            console.log('submitting', params);
     
             try { 
                 const response: TNSHttpFormDataResponse = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
