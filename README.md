@@ -1,6 +1,9 @@
 A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android. NS 6.1.0+ is required. Please use older version if you have older version of NS platform installed. 
 
 #### Versions
+[2.1.0]
+Upgraded to NS 6.3.0. Fixed Kotlin issue. More [here](https://github.com/dotnetdreamer/nativescript-http-formdata/issues/21)
+
 [2.0.0]
 Upgraded to NS 6.2.0. Fixed Kotlin issue. More [here](https://github.com/NativeScript/android-runtime/issues/1178)
 
@@ -42,21 +45,23 @@ https://github.com/NativeScript/nativescript-imagepicker
             //create params. You can upload an array of params i.e multiple data. For every parameter you need to give unique name
             //so you can get it on server. Check below how to grab it in ASP.Net MVC
             let params = [];
-
             let imageData: any;
-            if(image) {
-                if(image.ios) {
-                    imageData = UIImagePNGRepresentation(image);
-                } else {
-                    //can be one of these overloads https://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html
-                    let bitmapImage: android.graphics.Bitmap = image;
-                    let stream = new java.io.ByteArrayOutputStream();
-                    bitmapImage.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream);
-                    let byteArray = stream.toByteArray();
-                    bitmapImage.recycle();
+            
+            if(!image) {
+                throw 'Could not get image';
+            }
 
-                    imageData = byteArray;
-                }
+            if(image.ios) {
+                imageData = UIImagePNGRepresentation(image);
+            } else {
+                //can be one of these overloads https://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html
+                let bitmapImage: android.graphics.Bitmap = image;
+                let stream = new java.io.ByteArrayOutputStream();
+                bitmapImage.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream);
+                let byteArray = stream.toByteArray();
+                bitmapImage.recycle();
+
+                imageData = byteArray;
             }
             let param: TNSHttpFormDataParam = {
                 data: imageData,
@@ -70,8 +75,10 @@ https://github.com/NativeScript/nativescript-imagepicker
               parameterName: "firstName"
             };
             params.push(param2);
+
+            console.log('submitting', params);
     
-            try {
+            try { 
                 const response: TNSHttpFormDataResponse = await fd.post('http://10.10.10.149:10025/home/fileupload', params, {
                     headers: {
                         test1: "test1 value",
@@ -80,10 +87,12 @@ https://github.com/NativeScript/nativescript-imagepicker
                 });
                 console.log(response);
             } catch (e) {
+                console.log('---------------home.component.ts---------------');
                 console.log(e);
             }
           });
         }).catch(function (e) {
+            console.log('-------------------error----------------')
             console.log(e);
         });
     }
