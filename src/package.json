@@ -22,8 +22,8 @@
 		"tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
 		"ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
 		"prepack": "npm run build.native",
-		"demo.ios": "npm run tsc && cd ../demo-angular && tns run ios",
-		"demo.android": "npm run tsc && cd ../demo-angular && tns run android",
+		"demo.ios": "npm run tsc && cd ../demo-angular && tns run ios --no-hmr",
+		"demo.android": "npm run tsc && cd ../demo-angular && tns run android --no-hmr",
 		"demo.reset": "cd ../demo-angular && npx rimraf -- hooks node_modules platforms package-lock.json",
 		"plugin.prepare": "npm run build && cd ../demo-angular && tns plugin remove nativescript-http-formdata && tns plugin add ../src",
 		"clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
