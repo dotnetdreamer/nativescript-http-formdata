@@ -131,6 +131,6 @@ public ActionResult FileUpload(HttpPostedFileBase file1, HttpPostedFileBase file
 - **body** - response body (JSON Parsed if is a json, raw string else) 
 
 # <a name="donation"></a>Donation
-A donation will not make me rich, but your appreciation makes me happy😁
+A donation will not make me rich, but your appreciation makes me happy 😁
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GCL2WCBZKKWBC)
