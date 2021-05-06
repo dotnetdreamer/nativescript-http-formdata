@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-
-import * as imagepicker from "nativescript-imagepicker";
+import * as imagepicker from "@nativescript/imagepicker";
 import { TNSHttpFormData, TNSHttpFormDataParam, TNSHttpFormDataResponse } from 'nativescript-http-formdata';
-
 @Component({
     selector: "Home", 
     moduleId: module.id,

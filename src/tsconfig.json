@@ -23,5 +23,7 @@
     "exclude": [
         "node_modules"
     ],
+    "include": ["*.ios.ts", "*.android.ts"],
+    "files": ["./references.d.ts"],
     "compileOnSave": false
 }
