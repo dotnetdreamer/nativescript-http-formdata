@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-http-formdata",
-	"version": "2.1.0",
+	"version": "3.0.0",
 	"description": "A NativeScript plugin to post/upload file as multipart/form-data to server.",
 	"main": "TNSHttpFormData",
 	"typings": "index.d.ts",
@@ -12,7 +12,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dotnetdreamer/nativescript-http-formdata.git"
+		"url": "https://github.com/Fr3nky88/nativescript-http-formdata.git"
 	},
 	"scripts": {
 		"tsc": "npm i && tsc",
@@ -40,20 +40,19 @@
 		"name": "Idrees Khan"
 	},
 	"bugs": {
-		"url": "https://github.com/dotnetdreamer/nativescript-http-formdata/issues"
+		"url": "https://github.com/Fr3nky88/nativescript-http-formdata/issues"
 	},
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/dotnetdreamer/nativescript-http-formdata",
+	"homepage": "https://github.com/Fr3nky88/nativescript-http-formdata",
 	"readmeFilename": "README.md",
 	"devDependencies": {
-		"tns-core-modules": "~6.3.0",
-		"tns-platform-declarations": "^6.3.2",
-		"typescript": "~3.5.3",
-		"prompt": "^1.0.0",
-		"rimraf": "^2.6.3",
+		"@nativescript/core": "8.0.0",
+		"@nativescript/types": "8.0.0",
+		"prompt": "^1.1.0",
+		"rimraf": "^3.0.2",
+		"semver": "^7.3.5",
 		"tslint": "^5.12.1",
-		"semver": "^5.6.0"
+		"typescript": "~4.0.0"
 	},
-	"dependencies": {},
 	"bootstrapper": "nativescript-plugin-seed"
 }
