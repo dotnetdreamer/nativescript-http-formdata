@@ -1,6 +1,9 @@
 A NativeScript plugin to post/upload file as multipart/form-data to server for iOS and Android. NS 6.1.0+ is required. Please use older version if you have older version of NS platform installed. 
 
 #### Versions
+[3.0.0] 
+Upgraded to NS 8.0.0
+
 [2.1.0]
 Upgraded to NS 6.3.0. Fixed Kotlin issue. More [here](https://github.com/dotnetdreamer/nativescript-http-formdata/issues/21)
 
