@@ -2,7 +2,7 @@ A NativeScript plugin to post/upload file as multipart/form-data to server for i
 
 #### Versions
 [3.0.0] 
-Upgraded to NS 8.0.0
+Upgraded to NS 8.0.0. Thanks to [Fr3nky88](https://github.com/dotnetdreamer/nativescript-http-formdata/pull/38)
 
 [2.1.0]
 Upgraded to NS 6.3.0. Fixed Kotlin issue. More [here](https://github.com/dotnetdreamer/nativescript-http-formdata/issues/21)
