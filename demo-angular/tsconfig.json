@@ -1,22 +1,43 @@
 {
 	"compilerOptions": {
-	  "module": "esnext",
-	  "target": "es2017",
-	  "moduleResolution": "node",
-	  "experimentalDecorators": true,
-	  "emitDecoratorMetadata": true,
-	  "noEmitHelpers": true,
-	  "noEmitOnError": true,
-	  "skipLibCheck": true,
-	  "lib": ["es2017", "dom"],
-	  "baseUrl": ".",
-	  "paths": {
-		"~/*": ["src/*"],
-		"@/*": ["src/*"]
-	  }
+		"module": "esnext",
+		"target": "es2017",
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"noEmitHelpers": true,
+		"noEmitOnError": true,
+		"skipLibCheck": true,
+		"lib": [
+			"es2017",
+			"dom"
+		],
+		"baseUrl": ".",
+		"paths": {
+			"~/*": [
+				"src/*"
+			],
+			"@/*": [
+				"src/*"
+			]
+		},
+		"removeComments": false
 	},
-	"include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts","../src/**/*.ios.ts", "../src/**/*.android.ts"],
-	"files": ["./src/main.ts", "./references.d.ts"],
-	"exclude": ["node_modules", "platforms", "e2e"]
-  }
-  
+	"include": [
+		"src/tests/**/*.ts",
+		"src/**/*.ios.ts",
+		"src/**/*.android.ts",
+		"../src/**/*.ios.ts",
+		"../src/**/*.android.ts"
+	],
+	"files": [
+		"./src/main.ts",
+		"./references.d.ts",
+		"./src/polyfills.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"platforms",
+		"e2e"
+	]
+}
